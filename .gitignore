@@ -5,6 +5,8 @@
 /tmp
 *-compiled.js
 *-compiled.js.map
+*.css.map
+*.css
 
 # dependencies
 /node_modules
@@ -17,3 +19,5 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+.idea
