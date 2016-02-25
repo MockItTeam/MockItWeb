@@ -1,9 +1,13 @@
-<div class="">
-  {{#ui-draggable appendTo='body' helper='clone' onStart='dragClone'}}
-		I luv u!!~
+<div class='draggable-el-container'>
+  {{#ui-draggable appendTo='.droppable-el' helper='clone' onStart='dragClone' class='draggable-el'}}
+		aa
   {{/ui-draggable}}
+</div>
 
-  {{#ui-droppable onDrop='dropped'}}
-		asdasd
-  {{/ui-droppable}}
+<div class='droppable-el-container'>
+{{#ui-droppable onDrop='dropped' class='droppable-el'}}
+  {{#each model.elements as |el|}}
+    {{el}}
+  {{/each}}
+{{/ui-droppable}}
 </div>
