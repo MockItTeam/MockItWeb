@@ -37,8 +37,8 @@ export default Ember.Route.extend({
       '"x": 5,',
       '"y": 5,',
       '"z": 1,',
-      '"width": 800,',
-      '"height": 800,',
+      '"width": 400,',
+      '"height": 100,',
       '"childrenID": [1,2]',
       '}]',
       '}'].join(''));
@@ -60,22 +60,21 @@ export default Ember.Route.extend({
       _self.$().droppable({
         accept: '.draggable-el',
         drop(event, ui) {
-          var newClone = $(ui.helper).clone()
-            .addClass('draggable-el-clone')
+          var newClone = $(ui.helper)
+            .clone()
             .removeClass('draggable-el')
-            .draggable({cursor: 'pointer'});
+            .addClass('new-draggable-el')
+            .draggable({
+              cursor: 'pointer',
+              helper: 'original'
+            }).css('position', 'absolute');
           $(this).append(newClone);
         }
       });
     }),
 
-    dragClone: Ember.on('didTransition', function (event, ui, _self) {
-      // revert animated
-      _self.$().draggable({
-        revert(event, ui) {
-          return !event;
-        }
-      });
+    dragged: Ember.on('didTransition', function (event, ui, _self) {
+
     })
   }
 });
