@@ -1,6 +1,6 @@
 @import 'variables';
 
-@import 'bower_components/bootstrap/scss/bootstrap';
+@import '../../../bower_components/bootstrap/scss/bootstrap';
 
 // Shared
 
@@ -8,7 +8,10 @@
 
 // Layouts
 @import './layout/default';
+@import './layout/form';
 
 // Modules
+@import './module/auth_form';
 
 // Themes
+@import './theme/auth';
