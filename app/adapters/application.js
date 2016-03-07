@@ -1,8 +1,13 @@
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
+const {
+  InvalidError,
+  errorsHashToArray
+  } = DS;
+
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  host: 'http://localhost:3000',
+  host: 'http://10.2.16.165:3000',
   namespace: 'api/v1',
   authorizer: 'authorizer:oauth2',
 
@@ -12,6 +17,23 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     return Ember.String.pluralize(underscored);
   },
 
+  /**
+   Overrides the `handleResponse` method to format errors passed to a DS.InvalidError
+   for all 422 Unprocessable Entity responses
+   Reused from Active Model Adapter: https://github.com/ember-data/active-model-adapter/blob/master/addon/active-model-adapter.js
+   @method ajaxError
+   @param {Object} jqXHR
+   @return error
+   */
+  handleResponse: function(status, headers, payload) {
+    if (this.isInvalid(status, headers, payload)) {
+      let errors = errorsHashToArray(payload.errors);
+
+      return new InvalidError(errors);
+    } else {
+      return this._super(...arguments);
+    }
+  },
   // allows queries to be sent along with a findRecord
   // hopefully Ember / EmberData will soon have this built in
   // ember-data issue tracked here:
