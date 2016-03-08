@@ -1,0 +1,6 @@
+{{input value=project.name name=project_name}}
+{{project.owner.username}}
+{{#each project.members as |member|}}
+  {{member.username}}
+{{/each}}
+<button {{action 'save' project}} disabled={{if canSave null 'disabled'}}>Save</button>

@@ -7,7 +7,7 @@ const {
   } = DS;
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  host: 'http://10.2.16.165:3000',
+  host: 'http://158.108.236.82:3000',
   namespace: 'api/v1',
   authorizer: 'authorizer:oauth2',
 
