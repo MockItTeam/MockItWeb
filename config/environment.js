@@ -16,6 +16,18 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    googleFonts: [
+      'Mrs+Sheppards%7CDosis:300,400,700',
+      'Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',
+      'Roboto:300'
+    ],
+
+    // Set or update content security policies
+    contentSecurityPolicy: {
+      'font-src': "'self' fonts.gstatic.com",
+      'style-src': "'self' fonts.googleapis.com"
     }
   };
 
@@ -26,6 +38,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
+    // ENV.host = 'http://158.108.230.60:3000'
+    ENV.host = 'http://api.mockit.co'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

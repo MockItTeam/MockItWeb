@@ -11,8 +11,8 @@ Router.map(function() {
   this.route('editor');
 
   this.route('projects', function() {
-    this.route('index', {path: ''});
-    this.route('new', {path: 'new'});
+    this.route('index', {path: '/'});
+    this.route('new', {path: '/new'});
     this.route('detail', {path: '/:project_id'});
   });
 });

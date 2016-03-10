@@ -4,11 +4,11 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
 
 	//redirect to signin page when not authenticated
-	beforeModel() {
-		if(!this.get('session.isAuthenticated')) {
-			this.transitionTo('sessions.new');
-		}
-	},
+	// beforeModel() {
+	// 	if(!this.get('session.isAuthenticated')) {
+	// 		this.transitionTo('sessions.new');
+	// 	}
+	// },
 
   actions: {
     signout() {

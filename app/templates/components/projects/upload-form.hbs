@@ -1,0 +1,13 @@
+<div class="image-upload-container">
+  <div class="image-preview">
+    <div class="image-container">
+      <img src="{{project.image_url}}">
+    </div>
+  </div>
+  <div class="file-input">
+    {{#x-file-input value=project.image name='image' action='preview' on='change'}}
+      <span>browse</span>
+    {{/x-file-input}}
+    <button {{action 'uploadImage' project}} class="btn btn-success">Upload</button>
+  </div>
+</div>

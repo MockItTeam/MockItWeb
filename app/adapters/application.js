@@ -1,13 +1,15 @@
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import ENV from "../config/environment";
+import FormDataAdapterMixin from "../mixins/form-data-adapter-mixin"
 
 const {
   InvalidError,
   errorsHashToArray
   } = DS;
 
-export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  host: 'http://158.108.236.82:3000',
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, FormDataAdapterMixin, {
+  host: ENV.host,
   namespace: 'api/v1',
   authorizer: 'authorizer:oauth2',
 

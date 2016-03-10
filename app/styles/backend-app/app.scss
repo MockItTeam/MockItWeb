@@ -1,6 +1,6 @@
 @import 'variables';
 
-@import '../../../bower_components/bootstrap/scss/bootstrap';
+@import 'bootstrap';
 
 // Shared
 
@@ -15,3 +15,4 @@
 
 // Themes
 @import './theme/auth';
+@import './theme/landing_page';
