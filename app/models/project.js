@@ -13,5 +13,7 @@ export default DS.Model.extend({
 
   members: DS.hasMany('user', {
     inverse: 'projects'
-  })
+  }),
+
+  invitations: DS.hasMany('invitation')
 });

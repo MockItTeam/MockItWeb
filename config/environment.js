@@ -38,8 +38,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
-    // ENV.host = 'http://158.108.230.60:3000'
-    ENV.host = 'http://api.mockit.co'
+    ENV.host = 'http://158.108.134.176:3000'
+    // ENV.host = 'http://api.mockit.co'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

@@ -17,15 +17,10 @@
   {{/if}}
   <br>
 {{/each}}
-<form {{action 'save' member on='submit'}}>
-	<fieldset class="form-group">
-	  <label for="projectName">Add member</label>
-	  {{ input type="project-name" class="form-control" id="projectName" placeholder="Name"  }}
-	  <button type="submit" class="btn btn-primary">Add</button>
-	</fieldset>
-</form>
-<br><br>
 
-<button {{action 'destroy' project}}>Delete</button>
+
+{{!-- <button {{action 'destroy' project}}>Delete</button> --}}
+{{invitations.invite-form invitations=project.invitations project=project}}
+
 
 {{projects.upload-form project=project}}

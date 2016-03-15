@@ -1,15 +1,23 @@
 import Ember from 'ember';
-import $ from 'jquery';
+import DS from 'ember-data';
+const { service } = Ember.inject;
 
 export default Ember.Route.extend({
-
+	sessionUser: service('session'),
+	
   model() {
-    return this.store.findAll('project');
+    return this.get('sessionUser.currentUser').then((sessionUser) => {
+      return Ember.RSVP.hash({
+        projects: this.store.findAll('project'),
+        invitations: this.store.query('invitation', { user_id: sessionUser.get('id'), status: 'pending' })
+      });
+    });
+   
   },
 
   actions: {
-    didTransition() {
-
+    afterAccept() {
+      this.transitionTo('projects.index');
     }
   }
 });

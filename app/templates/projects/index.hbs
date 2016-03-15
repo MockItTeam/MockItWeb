@@ -1,5 +1,3 @@
-{{#each model as |project|}}
-  {{#link-to 'projects.detail' project.id}}
-  	{{project.name}}
-  {{/link-to}}
-{{/each}}
+{{projects.project-list projects=model.projects}}
+
+{{invitations.incoming-form invitations=model.invitations afterAccept='afterAccept'}}
