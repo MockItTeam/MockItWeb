@@ -23,7 +23,9 @@ export default Draggable.extend({
 
   didInsertElement() {
     let element = ElementFactory.createElement(this.get('e'));    
-    element.render(this.$());
+    if (element.renderable) {
+      element.render(this.$());
+    }
   },
 
 });
@@ -40,8 +42,9 @@ export class ElementFactory {
         return new TextField(obj);
       case "TextArea":
         return new TextArea(obj);
+      case "Root":
       default:
-        return new Element(obj);
+        return new NoneElement(obj);
     }
   }
   
@@ -54,11 +57,23 @@ class Element {
     this.y = obj.y;
     this.width = obj.width;
     this.height = obj.height;
+    this.renderable = true;
   }
 
   render(jquery) {
     jquery.draggable({
-      cancel: ''
+      drag: function( event, ui ) {
+        // Keep the left edge of the element
+        // at least 100 pixels from the container
+        // ui.position.left = Math.min( 100, ui.position.left );
+      },
+      start: function( event, ui ) {
+        jquery.addClass("dragging");
+
+      },
+      stop: function( event, ui ) {
+        jquery.removeClass("dragging");
+      }
     }).css({
       "z-order": this.z,
       top: this.y,
@@ -68,6 +83,13 @@ class Element {
     });
   }
 
+}
+
+class NoneElement extends Element {
+  constructor(obj) {
+    super(obj);
+    this.renderable = false;
+  }
 }
 
 class Label extends Element {
