@@ -4,7 +4,8 @@
 
 .droppable-el {
   position: relative;
-  background-color: red;
+  // background-color: green;
+  border: 1px solid black;
   resize: both;
   overflow: auto;
 }

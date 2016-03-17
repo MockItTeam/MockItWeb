@@ -1,14 +1,14 @@
 <div class='editor-container'>
 	<div class='draggable-el-container'>
-    {{#ui-draggable appendTo='.droppable-el' revert='invalid' helper='clone'  onStart='dragged' class='draggable-el'}}
-			aa
+    {{#ui-draggable appendTo='.droppable-el' revert='invalid' helper='clone' onStart='dragged' class='draggable-el'}}
+			
     {{/ui-draggable}}
 	</div>
 
 	<div class='droppable-el-container'>
     {{#ui-droppable onDrop='dropped' class='droppable-el'}}
-      {{#each model.elements as |el|}}
-        {{#editor.new-element element=el onStart='dragged'}}
+      {{#each model.elements as |e|}}
+        {{#editor.new-element e=e onStart='dragged'}}
 
         {{/editor.new-element}}
       {{/each}}
